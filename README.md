@@ -1,17 +1,17 @@
-# Radix-2 FFT Accelerator in Verilog
+# Radix-2 FFT Accelerator - Verilog Implementation
 
-A hardware implementation of a 64-point radix-2 decimation-in-time (DIT) Fast Fourier Transform (FFT) accelerator, designed and verified in Verilog HDL.
+Hardware implementation of a 64-point radix-2 decimation-in-time (DIT) Fast Fourier Transform accelerator in Verilog HDL.
 
 ## 📋 Overview
 
-This project implements a complete FFT hardware accelerator with the following features:
+This Verilog implementation features:
 
 - **64-point FFT** computation (configurable via parameters)
 - **Radix-2 Decimation-in-Time (DIT)** algorithm
 - **Single-cycle butterfly unit** for complex arithmetic
 - **Dual-port SRAM** for in-place computation
 - **Hierarchical state machine** control unit
-- Full **spectral analysis verification** using impulse and sinusoidal inputs
+- Complete testbench with spectral analysis verification
 
 📖 **[Read the Full Technical Report (PDF)](radix2_fft.pdf)**
 
@@ -50,30 +50,22 @@ Implements a hierarchical state machine with:
 - **Complex Multiplier** (`complex_mult.v`): (a + jb) × (c + jd) = (ac - bd) + j(ad + bc)
 - **Butterfly Adder** (`butterfly_add.v`): Computes A' = A + W×B and B' = A - W×B
 
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
-fft/
-├── README.md                  # This file
-├── main.tex                   # IEEE conference paper documentation
-├── main.pdf                   # Compiled paper
-├── radix2_fft.pdf            # FFT algorithm reference
-├── images/                    # Architecture diagrams
-│   ├── asm_chart.png         # ASM chart of control unit
-│   ├── control_unit.png      # Control unit block diagram
-│   ├── datapath.png          # Datapath architecture
-│   └── simulation_waves.png  # Waveform simulation results
-└── verilog/                   # HDL source files
-    ├── fft_top.v             # Top-level integration
-    ├── control_unit.v        # FSM and address generation
-    ├── fft_datapath.v        # Computational datapath
-    ├── dual_port_sram.v      # Dual-port memory
-    ├── twiddle_rom.v         # Twiddle factor storage
-    ├── complex_mult.v        # Complex multiplication
-    ├── butterfly_add.v       # Butterfly computation
-    ├── fft_tb.v              # Testbench with stimulus
-    ├── fft.vcd               # Waveform dump file
-    └── my_fft                # Compiled simulation executable
+verilog/
+├── README.md              # This file
+├── fft_top.v              # Top-level integration
+├── control_unit.v         # FSM and address generation
+├── fft_datapath.v         # Computational datapath
+├── dual_port_sram.v       # Dual-port memory
+├── twiddle_rom.v          # Twiddle factor storage
+├── complex_mult.v         # Complex multiplication
+├── butterfly_add.v        # Butterfly computation
+├── fft_tb.v               # Testbench with stimulus
+├── fft.vcd                # Waveform dump file
+├── my_fft                 # Compiled simulation executable
+└── radix2_fft.pdf         # FFT algorithm reference
 ```
 
 ## 🚀 Getting Started
@@ -82,7 +74,6 @@ fft/
 
 - **Icarus Verilog** (iverilog) for simulation
 - **GTKWave** for waveform viewing
-- **LaTeX** (optional) for paper compilation
 
 ### Installation
 
@@ -186,37 +177,13 @@ To change FFT size:
 - **64-point FFT**: M = 6
 - **128-point FFT**: M = 7
 
-## 📄 Documentation
-
-Detailed documentation is available in the IEEE conference paper format:
-
-- Source: `main.tex`
-- Compiled PDF: `main.pdf`
-
-The paper includes:
-
-- Algorithm explanation
-- Architecture description
-- ASM charts and block diagrams
-- Verification methodology and results
-
-## 👤 Author
+## Author
 
 **Sihoon Kim**  
 New York University  
 Email: sk11977@nyu.edu
 
-## 📝 License
-
-This project is developed for educational purposes as part of coursework at NYU.
-
-## 🙏 Acknowledgments
-
-- Based on the Cooley-Tukey FFT algorithm
-- References standard radix-2 DIT implementation
-- Verification methodology inspired by digital signal processing literature
-
-## 🐛 Known Issues / Future Work
+## Known Issues / Future Work
 
 - [ ] Add support for inverse FFT (IFFT)
 - [ ] Implement radix-4 for improved efficiency
@@ -226,7 +193,7 @@ This project is developed for educational purposes as part of coursework at NYU.
 
 ## 📚 References
 
-See `radix2_fft.pdf` and the bibliography in `main.tex` for detailed references.
+See `radix2_fft.pdf` for the FFT algorithm reference and detailed technical documentation.
 
 ---
 
